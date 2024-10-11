@@ -29,6 +29,7 @@ app.get('/info', (req, res) => {
 
 import supplementRoutes from './routes/supplement.routes.js';
 
+app.use('/', userRoutes);
 app.use('/', supplementRoutes);
 
 
