@@ -8,15 +8,15 @@ const SupplementSchema = new mongoose.Schema ({
     },
     name: {
         type: String,
-        required: "Name is required",
+        required: 'Name is required',
     },
     description: {
         type: String,
-        required: "Description is required",
+        required: 'Description is required',
     },
     price: {
         type: Number,
-        required: "Price is required",
+        required: 'Price is required',
     },
 });
 
