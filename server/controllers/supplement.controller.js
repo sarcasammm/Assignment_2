@@ -15,3 +15,14 @@ const create = async (req, res) => {
         });
     }   
 };
+
+const list = async (req, res) => {
+    try {
+      let supplements = await Supplement.find().select('id name description price quantity');
+      res.json(supplements);
+    } catch (err) {
+      return res.status(400).json({
+        error: errorHandler.getErrorMessage(err)
+      });
+    }
+  };
