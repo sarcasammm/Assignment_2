@@ -26,3 +26,19 @@ const list = async (req, res) => {
       });
     }
   };
+
+  const supplementByID = async (req, res, next, id) => {
+    try {
+      let supplement = await Supplement.findById(id);
+      if (!supplement)
+        return res.status(400).json({
+          error: "Supplement not found"
+        });
+      req.profile = supplement;
+      next();
+    } catch (err) {
+      return res.status(400).json({
+        error: "Could not retrieve supplement"
+      });
+    }
+  };
