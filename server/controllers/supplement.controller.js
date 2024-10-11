@@ -42,3 +42,36 @@ const list = async (req, res) => {
       });
     }
   };
+
+  const read = (req, res) => {
+    return res.json(req.profile);
+  };
+
+  const update = async (req, res) => {
+    try {
+      let supplement = req.profile;
+      supplement = extend(supplement, req.body);
+      supplement.updated = Date.now();
+      await supplement.save();
+      res.json(supplement);
+    } catch (err) {
+      return res.status(400).json({
+        error: errorHandler.getErrorMessage(err)
+      });
+    }
+  };
+
+  const remove = async (req, res) => {
+    try {
+      let supplement = req.profile;
+      let deletedSupplement = await supplement.deleteOne();
+      res.json(deletedSupplement);
+    } catch (err) {
+      return res.status(400).json({
+        error: errorHandler.getErrorMessage(err)
+      });
+    }
+  };
+  
+  export default { create, list, supplementByID, read, update, remove };
+  
