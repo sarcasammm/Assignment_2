@@ -27,4 +27,9 @@ app.get('/info', (req, res) => {
     });
 });
 
+import supplementRoutes from './routes/supplement.routes.js';
+
+app.use('/', supplementRoutes);
+
+
 export default app
